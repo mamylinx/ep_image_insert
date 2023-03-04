@@ -3,6 +3,9 @@
 ### Installation
 
 ```sh
+cd /path/to/etherpad-lite
+# The `--no-save` and `--legacy-peer-deps` arguments are necessary to work
+# around npm quirks.
 npm install --no-save --legacy-peer-deps ep_image_insert
 ```
 
