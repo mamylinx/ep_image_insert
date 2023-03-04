@@ -2,7 +2,7 @@
 
 ### Installation
 
-````sh
+```sh
 npm install --no-save --legacy-peer-deps ep_image_insert
 ```
 
