@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"YaronSh"
+		]
+	},
+	"ep_image_insert.toolbar.image_upload.title": "העלאת תמונה",
+	"ep_image_insert.error.title": "שגיאה",
+	"ep_image_insert.error.fileSize": "הקובץ גדול מדי! הגודל המרבי המותר הוא {{maxallowed}} מ״ב",
+	"ep_image_insert.error.fileType": "סוג הקובץ בלתי־תקין!"
+}

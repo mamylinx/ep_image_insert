@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mariagarbin",
+			"YuriNikolai"
+		]
+	},
+	"ep_image_insert.toolbar.image_upload.title": "Carregar imagem",
+	"ep_image_insert.error.title": "Erro",
+	"ep_image_insert.error.fileSize": "O arquivo é muito grande! O tamanho máximo permitido é de {{maxallowed}} MB.",
+	"ep_image_insert.error.fileType": "Tipo de arquivo inválido!"
+}

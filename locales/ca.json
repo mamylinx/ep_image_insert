@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mguix"
+		]
+	},
+	"ep_image_insert.toolbar.image_upload.title": "Carregar la imatge",
+	"ep_image_insert.error.fileSize": "El fitxer és massa gran.",
+	"ep_image_insert.error.fileType": "El tipus de fitxer no és vàlid"
+}

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Adr mm"
+		]
+	},
+	"ep_image_insert.toolbar.image_upload.title": "Càrriga s'imàgine",
+	"ep_image_insert.error.title": "Errore",
+	"ep_image_insert.error.fileSize": "S'archìviu est tropu mannu. Sa dimensione màssima permìtida est de {{maxallowed}} MB.",
+	"ep_image_insert.error.fileType": "Tipu de archìviu non vàlidu."
+}

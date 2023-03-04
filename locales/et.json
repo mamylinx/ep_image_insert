@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"ep_image_insert.toolbar.image_upload.title": "Lae pilt üles",
+	"ep_image_insert.error.fileSize": "Pilt on liiga suur",
+	"ep_image_insert.error.fileType": "Vale pilditüüp"
+}

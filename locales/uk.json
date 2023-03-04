@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"DDPAT",
+			"Ice bulldog"
+		]
+	},
+	"ep_image_insert.toolbar.image_upload.title": "Завантажити зображення",
+	"ep_image_insert.error.title": "Помилка",
+	"ep_image_insert.error.fileSize": "Файл завеликий! Максимально дозволений розмір – {{maxallowed}} МБ.",
+	"ep_image_insert.error.fileType": "Недійсний тип файлу!"
+}

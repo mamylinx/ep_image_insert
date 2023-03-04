@@ -1,0 +1,6 @@
+{
+    "ep_image_insert.toolbar.image_upload.title": "Upload image",
+    "ep_image_insert.error.title": "Error",
+    "ep_image_insert.error.fileSize": "File is too large! Maximum allowed size is {{maxallowed}} MB.",
+    "ep_image_insert.error.fileType": "Invalid file type!"
+}

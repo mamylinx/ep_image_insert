@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"ep_image_insert.toolbar.image_upload.title": "Careche l'immaggine",
+	"ep_image_insert.error.fileSize": "File troppe gruèsse",
+	"ep_image_insert.error.fileType": "Tipe de fail non valide"
+}

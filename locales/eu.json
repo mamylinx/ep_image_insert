@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alexgabi",
+			"Izendegi"
+		]
+	},
+	"ep_image_insert.toolbar.image_upload.title": "Igo irudia",
+	"ep_image_insert.error.title": "Errorea",
+	"ep_image_insert.error.fileSize": "Fitxategia handiegia da! Onartutako gehienezko tamaina {{maxallowed}} MB da.",
+	"ep_image_insert.error.fileType": "Fitxategi mota baliogabea!"
+}

@@ -1,0 +1,32 @@
+{
+  "name": "ep_image_insert",
+  "description": "Insert and resize images on etherpad",
+  "version": "1.0.0",
+  "author": {
+    "name": "Mamy Linx",
+    "email": "mamy.else@gmail.com",
+    "url": "https://github.com/mamylinx"
+  },
+  "contributors": [],
+  "dependencies": {
+    "busboy": "0.3.1",
+    "lodash": "4.17.21",
+    "mime-db": "1.49.0",
+    "stream_upload": "0.0.6",
+    "uuid": "8.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mamylinx/ep_image_insert.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mamylinx/ep_image_insert/issues"
+  },
+  "homepage": "https://github.com/mamylinx/ep_image_insert",
+  "peerDependencies": {
+    "ep_etherpad-lite": ">=1.8.6"
+  },
+  "engines": {
+    "node": ">=11.14.0"
+  }
+}

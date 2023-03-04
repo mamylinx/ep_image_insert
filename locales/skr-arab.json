@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saraiki"
+		]
+	},
+	"ep_image_insert.toolbar.image_upload.title": "تصویر اپ لوڈ کرو",
+	"ep_image_insert.error.title": "خرابی",
+	"ep_image_insert.error.fileSize": "فائل ٻہوں وݙی ہے! ودھ کنوں ودھ سائز {{maxallowed}} دی اجازت ہے۔",
+	"ep_image_insert.error.fileType": "غلط فائل قسم!"
+}

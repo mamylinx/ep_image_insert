@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Besnik b",
+			"Eraldkerciku"
+		]
+	},
+	"ep_image_insert.toolbar.image_upload.title": "Ngarko figurë",
+	"ep_image_insert.error.title": "Gabim",
+	"ep_image_insert.error.fileSize": "Kartela është shumë e madhe! Madhësia maksimum e lejuar është {{maxallowed}} MB.",
+	"ep_image_insert.error.fileType": "Lloj i pavlefshëm kartele!"
+}

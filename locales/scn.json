@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ajeje Brazorf"
+		]
+	},
+	"ep_image_insert.toolbar.image_upload.title": "Càrrica mmàggini",
+	"ep_image_insert.error.title": "Erruri",
+	"ep_image_insert.error.fileSize": "Lu file è troppu granni",
+	"ep_image_insert.error.fileType": "Tipu di file nun vàlidu"
+}

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ykhwong",
+			"그냥기여자"
+		]
+	},
+	"ep_image_insert.toolbar.image_upload.title": "이미지 업로드",
+	"ep_image_insert.error.title": "오류",
+	"ep_image_insert.error.fileSize": "파일이 너무 큽니다! 최대 파일 크기는 {{maxallowed}}MB입니다.",
+	"ep_image_insert.error.fileType": "파일 유형이 유효하지 않습니다!"
+}

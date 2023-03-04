@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sabelöga",
+			"WikiPhoenix"
+		]
+	},
+	"ep_image_insert.toolbar.image_upload.title": "Ladda upp bild",
+	"ep_image_insert.error.title": "Fel",
+	"ep_image_insert.error.fileSize": "Filen är för stor! Maximalt tillåten storlek är {{maxallowed}} MB.",
+	"ep_image_insert.error.fileType": "Ogiltig filtyp!"
+}

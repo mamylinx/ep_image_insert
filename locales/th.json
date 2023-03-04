@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Andibecker",
+			"Just Sayori",
+			"Trisorn Triboon"
+		]
+	},
+	"ep_image_insert.toolbar.image_upload.title": "อัปโหลดรูปภาพ",
+	"ep_image_insert.error.title": "ข้อผิดพลาด",
+	"ep_image_insert.error.fileSize": "ไฟล์ใหญ่เกินไป ขนาดสูงสุดที่อนุญาตคือ {{maxallowed}} MB",
+	"ep_image_insert.error.fileType": "ประเภทไฟล์ไม่ถูกต้อง"
+}

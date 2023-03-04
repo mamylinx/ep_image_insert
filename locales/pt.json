@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Unamane"
+		]
+	},
+	"ep_image_insert.toolbar.image_upload.title": "Enviar imagem",
+	"ep_image_insert.error.fileSize": "O ficheiro é demasiado grande",
+	"ep_image_insert.error.fileType": "O tipo de ficheiro não é válido"
+}

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"ep_image_insert.toolbar.image_upload.title": "Naloži sliko",
+	"ep_image_insert.error.title": "Napaka",
+	"ep_image_insert.error.fileSize": "Datoteka je prevelika! Največja dovoljena velikost je {{maxallowed}} MB.",
+	"ep_image_insert.error.fileType": "Neveljavna vrsta datoteke!"
+}

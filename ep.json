@@ -1,0 +1,39 @@
+{
+  "parts": [
+    {
+      "name": "ep_image_insert",
+      "client_hooks": {
+        "postToolbarInit": "ep_image_insert/static/js/toolbar",
+        "aceAttribsToClasses" : "ep_image_insert/static/js/clientHooks",
+        "aceDomLineProcessLineAttributes" : "ep_image_insert/static/js/clientHooks",
+        "postAceInit": "ep_image_insert/static/js/clientHooks",
+        "aceInitialized": "ep_image_insert/static/js/clientHooks",
+        "aceRegisterBlockElements": "ep_image_insert/static/js/clientHooks",
+        "aceCreateDomLine": "ep_image_insert/static/js/clientHooks",
+        "acePostWriteDomLineHTML" : "ep_image_insert/static/js/clientHooks",
+        "aceAttribClasses": "ep_image_insert/static/js/clientHooks",
+        "aceEditorCSS": "ep_image_insert/static/js/clientHooks",
+        "collectContentImage": "ep_image_insert/static/js/contentCollection",
+        "collectContentPre": "ep_image_insert/static/js/contentCollection",
+        "ccRegisterBlockElements": "ep_image_insert/static/js/contentCollection",
+        "collectContentPost": "ep_image_insert/static/js/contentCollection"
+      },
+      "hooks":{
+        "clientVars": "ep_image_insert/index",
+        "eejsBlock_body": "ep_image_insert/index",
+        "collectContentImage": "ep_image_insert/static/js/contentCollection",
+        "getLineHTMLForExport": "ep_image_insert/exportHTML",
+        "stylesForExport": "ep_image_insert/exportHTML",
+        "expressConfigure": "ep_image_insert/index",
+        "eejsBlock_editbarMenuLeft": "ep_image_insert/editbar",
+        "collectContentPre": "ep_image_insert/static/js/contentCollection",
+        "collectContentPost": "ep_image_insert/static/js/contentCollection",
+        "ccRegisterBlockElements": "ep_image_insert/static/js/contentCollection",
+        "loadSettings": "ep_image_insert/settings",
+        "padRemove": "ep_image_insert/index",
+        "eejsBlock_styles": "ep_image_insert/index",
+        "eejsBlock_timesliderStyles": "ep_image_insert/index"
+      }
+    }
+  ]
+}

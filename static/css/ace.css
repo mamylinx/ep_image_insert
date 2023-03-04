@@ -1,0 +1,66 @@
+.image{
+  display:block;
+  position:relative;
+  margin: 20px auto;
+}
+
+.image > img{
+  width:100% !important;
+  height: auto !important;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;  
+}
+
+.image:hover .control-container {
+  display: block;
+}
+
+.image > .control-container {
+  position: absolute;
+  display:none;
+  background-color: #000;
+  opacity: .25;
+  bottom: 0px;
+  right: 0;
+  padding: 9px 9px 3px;
+  border-radius: 5px;
+}
+
+.image > .control-container > .control{
+  display:inline-flex;
+  background-color:#fff;
+  opacity:0.7;
+  margin: 2px;
+  border: solid #666 1px;
+  cursor:pointer;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;	
+}
+
+.image > .control-container > .control:active{
+  background-color: #666;
+}
+
+.image > .control-container > .control:hover{
+  opacity:1;
+}
+
+.image > .control-container > #small{
+  height:20px;
+  width:20px;
+}
+
+.image > .control-container > #medium{
+  height:35px;
+  width:35px;
+}
+
+.image > .control-container > #large{
+  height:50px;
+  width:50px;
+}

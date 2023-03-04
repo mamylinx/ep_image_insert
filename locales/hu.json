@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"ep_image_insert.toolbar.image_upload.title": "Kép feltöltése",
+	"ep_image_insert.error.fileSize": "Túl nagy a fájl",
+	"ep_image_insert.error.fileType": "Érvénytelen fájltípus"
+}
