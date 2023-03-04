@@ -1,5 +1,11 @@
 # Image support within Etherpad with resize
 
+Plugin to upload images to Etherpad (https://etherpad.org/).
+Supported storages:
+- Base 64 - default
+- Local (disk) storage
+- Amazon S3
+
 ### Installation
 
 ```sh
@@ -8,13 +14,6 @@ cd /path/to/etherpad-lite
 # around npm quirks.
 npm install --no-save --legacy-peer-deps ep_image_insert
 ```
-
-Plugin to upload images to Etherpad (https://etherpad.org/).
-
-Supported storages:
-- Base 64 - default
-- Local (disk) storage
-- Amazon S3
 
 ### Base64 
 
