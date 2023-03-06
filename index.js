@@ -13,11 +13,13 @@ const fs = require('fs');
 /**
  * ClientVars hook
  *
- * Exposes plugin settings from settings.json to client code inside clientVars variable
+ * Exposes plugin settings from settings.json to client code inside 
+clientVars variable
  * to be accessed from client side hooks
  *
  * @param {string} hookName Hook name ("clientVars").
- * @param {object} args Object containing the arguments passed to hook. {pad: {object}}
+ * @param {object} args Object containing the arguments passed to hook. 
+{pad: {object}}
  * @param {function} cb Callback
  *
  * @returns {*} callback
@@ -37,7 +39,9 @@ exports.clientVars = (hookName, args, cb) => {
       pluginSettings[key] = settings.ep_image_insert[key];
     }
   });
-  if (settings.ep_image_insert.storage && settings.ep_image_insert.storage.type !== 'base64') {
+  if (settings.ep_image_insert.storage)
+  // && settings.ep_image_insert.storage.type !== 'base64') 
+  {
     pluginSettings.storageType = settings.ep_image_insert.storage.type;
   }
 
@@ -47,12 +51,16 @@ exports.clientVars = (hookName, args, cb) => {
 };
 
 exports.eejsBlock_styles = (hookName, args, cb) => {
-  args.content += "<link href='../static/plugins/ep_image_insert/static/css/ace.css' rel='stylesheet'>";
+  args.content += "<link 
+href='../static/plugins/ep_image_insert/static/css/ace.css' 
+rel='stylesheet'>";
   return cb();
 };
 
 exports.eejsBlock_timesliderStyles = (hookName, args, cb) => {
-  args.content += "<link href='../../static/plugins/ep_image_insert/static/css/ace.css' rel='stylesheet'>";
+  args.content += "<link 
+href='../../static/plugins/ep_image_insert/static/css/ace.css' 
+rel='stylesheet'>";
   args.content += '<style>.control-container{display:none}</style>';
   return cb();
 };
@@ -69,7 +77,8 @@ const drainStream = (stream) => {
 };
 
 exports.expressConfigure = (hookName, context) => {
-  context.app.post('/p/:padId/pluginfw/ep_image_insert/upload', (req, res, next) => {
+  context.app.post('/p/:padId/pluginfw/ep_image_insert/upload', (req, res, 
+next) => {
     const padId = req.params.padId;
     let busboy;
     const imageUpload = new StreamUpload({
@@ -112,12 +121,17 @@ exports.expressConfigure = (hookName, context) => {
       let uploadResult;
       const newFileName = uuid.v4();
       let accessPath = '';
-      busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
-        let savedFilename = path.join(padId, newFileName + path.extname(filename));
+      busboy.on('file', (fieldname, file, filename, encoding, mimetype) => 
+{
+        let savedFilename = path.join(padId, newFileName + 
+path.extname(filename));
 
-        if (settings.ep_image_insert.storage && settings.ep_image_insert.storage.type === 'local') {
-          accessPath = new url.URL(savedFilename, settings.ep_image_insert.storage.baseURL);
-          savedFilename = path.join(settings.ep_image_insert.storage.baseFolder, savedFilename);
+        if (settings.ep_image_insert.storage && 
+settings.ep_image_insert.storage.type === 'local') {
+          accessPath = new url.URL(savedFilename, 
+settings.ep_image_insert.storage.baseURL);
+          savedFilename = 
+path.join(settings.ep_image_insert.storage.baseFolder, savedFilename);
         }
         file.on('limit', () => {
           const error = new Error('File is too large');
@@ -155,9 +169,11 @@ exports.expressConfigure = (hookName, context) => {
 
 exports.padRemove = async (hookName, context) => {
   // If storageType is local, delete the folder for the images
-  const {ep_image_insert: {storage: {type, baseFolder} = {}} = {}} = settings;
+  const {ep_image_insert: {storage: {type, baseFolder} = {}} = {}} = 
+settings;
   if (type === 'local') {
     const dir = path.join(baseFolder, context.padID);
     await fs.promises.rmdir(dir, {recursive: true});
   }
 };
+
