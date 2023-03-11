@@ -6,7 +6,6 @@ const _handleNewLines = (ace) => {
   const curLine = rep.lines.atIndex(lineNumber);
   if (curLine.text) {
     ace.ace_doReturnKey();
-
     return lineNumber + 1;
   }
 

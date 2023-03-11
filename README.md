@@ -21,9 +21,6 @@ Images are converted to base64 and stored inside etherpad document
 Sample configuration in `settings.json` for using with base64:
 ``` javascript
 "ep_image_insert": {
-    "storage":{
-      "type": "base64"
-    },
     "fileTypes": ["jpeg", "jpg", "bmp", "gif", "png"],
     "maxFileSize": 5000000
 }

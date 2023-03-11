@@ -5,14 +5,17 @@
 exports.collectContentImage = (hookName, {node, state: {lineAttributes}, tname}) => {
   if (tname === 'div' || tname === 'p') {
     delete lineAttributes.img;
-    delete lineAttributes.imgSize;
+    delete lineAttributes.imgWidth;
+    delete lineAttributes.imgAlign;
   }
   if (tname === 'img') {
     lineAttributes.img = node.outerHTML;
   }
+  lineAttributes.imgAlign = 'none';
+  
   if (node.parentNode && node.parentNode.style.width) {
     if (node.parentNode.style.width === '50%') {
-      lineAttributes.imgSize = 'medium';
+      lineAttributes.imgWidth = '50';
     }
   }
   lineAttributes.img =
@@ -35,8 +38,11 @@ exports.collectContentPost = (name, context) => {
   if (tname === 'img') {
     delete lineAttributes.img;
   }
-  if (tname === 'imgSize') {
-    delete lineAttributes.imgSize;
+  if (tname === 'imgWidth') {
+    delete lineAttributes.imgWidth;
+  }
+  if (tname === 'imgAlign') {
+    delete lineAttributes.imgAlign;
   }
 };
 

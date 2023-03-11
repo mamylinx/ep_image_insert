@@ -1,11 +1,10 @@
 .image{
   display:block;
   position:relative;
-  margin: 20px auto;
+  margin: 5px auto;
 }
 
 .image > img{
-  width:100% !important;
   height: auto !important;
   -moz-user-select: -moz-none;
   -khtml-user-select: none;
@@ -20,21 +19,28 @@
 .image > .control-container {
   position: absolute;
   display:none;
-  background-color: #000;
-  opacity: .25;
-  bottom: 0px;
-  right: 0;
+  background-color: #fff;
+  opacity: .95;
+  color: #000;
+  width: 370px;
+  bottom: -30px;
+  /* right: 0px; */
   padding: 9px 9px 3px;
   border-radius: 5px;
+  box-shadow: 2px 2px 2px #ccc;
+}
+
+
+.control-container > .buttonicon{
+  	height: 24px;
+    width: 24px;
 }
 
 .image > .control-container > .control{
   display:inline-flex;
   background-color:#fff;
-  opacity:0.7;
-  margin: 2px;
-  border: solid #666 1px;
-  cursor:pointer;
+  color: #aaa;
+  margin: 8px;
   -moz-user-select: -moz-none;
   -khtml-user-select: none;
   -webkit-user-select: none;
