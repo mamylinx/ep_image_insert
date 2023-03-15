@@ -1,72 +1,23 @@
-.image{
-  display:block;
-  position:relative;
+.image {
+  display: block;
+  position: relative;
   margin: 5px auto;
 }
 
-.image > img{
+.image>img {
   height: auto !important;
   -moz-user-select: -moz-none;
   -khtml-user-select: none;
   -webkit-user-select: none;
-  user-select: none;  
-}
-
-.image:hover .control-container {
-  display: block;
-}
-
-.image > .control-container {
-  position: absolute;
-  display:none;
-  background-color: #fff;
-  opacity: .95;
-  color: #000;
-  width: 370px;
-  bottom: -30px;
-  /* right: 0px; */
-  padding: 9px 9px 3px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px #ccc;
+  user-select: none;
 }
 
 
-.control-container > .buttonicon{
-  	height: 24px;
-    width: 24px;
+.control-container>.buttonicon {
+  height: 24px;
+  width: 24px;
 }
 
-.image > .control-container > .control{
-  display:inline-flex;
-  background-color:#fff;
-  color: #aaa;
-  margin: 8px;
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;	
-}
-
-.image > .control-container > .control:active{
-  background-color: #666;
-}
-
-.image > .control-container > .control:hover{
-  opacity:1;
-}
-
-.image > .control-container > #small{
-  height:20px;
-  width:20px;
-}
-
-.image > .control-container > #medium{
-  height:35px;
-  width:35px;
-}
-
-.image > .control-container > #large{
-  height:50px;
-  width:50px;
+.control-container .active {
+  border: 1px solid #666;
 }

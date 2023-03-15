@@ -24,6 +24,19 @@ const image = {
   }
 };
 
+const iiT = {
+  hide: () => {
+    const padOuter = $('iframe[name="ace_outer"]').contents().find('body');
+    const inlineToolbar = padOuter.find('#inline_image_toolbar');   
+    $(inlineToolbar).hide();
+  },
+  show: () => {
+    const padOuter = $('iframe[name="ace_outer"]').contents().find('body');
+    const inlineToolbar = padOuter.find('#inline_image_toolbar');    
+    $(inlineToolbar).css('display', 'inline-flex');
+  },
+};
+
 exports.aceAttribsToClasses = (name, context) => {
   if (context.key === 'img') {
     let imgUrl = context.value;
@@ -65,14 +78,7 @@ exports.aceDomLineProcessLineAttributes = (name, context) => {
 
   const randomId = Math.floor((Math.random() * 100000) + 1);
   let template = `<span id="${randomId}" class="image" style="width:${width}%;float:${imgPos}">`;
-  let pos = width > 45 ? 0 : -220;
-  template += `<span class="control-container" style="right:${pos}px">`;
-  template += `<span id="wValue" unselectable="on" contenteditable=false>${width}%</span>`;
-  template += `<input type="range" unselectable="on" class="control ${randomId}" value=${width} id="_width" name="width" min=10 max=100 step=2>`;
-  template += `<button class="control ${randomId} buttonicon buttonicon-align-left" id="left" title="Left" aria-label="Left"></button>`;
-  template += `<button class="control ${randomId} buttonicon buttonicon-align-right" id="right" title="Right" aria-label="Right"></button>`;
-  template += `<button class="control ${randomId} buttonicon buttonicon-align-center" id="center" title="Center" aria-label="Center"></button>`;
-  template += `</span>`;
+  
   if (imgType[1]) {
     const preHtml = `${template} <img src="${imgType[1]}" style="height:${height}%;width:100%;">`;
     const postHtml = '</span>';
@@ -87,41 +93,122 @@ exports.aceDomLineProcessLineAttributes = (name, context) => {
   return [];
 };
 
+exports.aceInitialized = (hook, context) => {
+  const editorInfo = context.editorInfo;
+  editorInfo.ace_addImage = image.addImage.bind(context);
+  editorInfo.ace_setImageSize = image.setImageSize.bind(context);
+  editorInfo.ace_setImageAlign = image.setImageAlign.bind(context);
+  editorInfo.ace_removeImage = image.removeImage.bind(context);
+};
+
+function activate(pad, control) {
+  var currentCtrl = pad.find('.active');
+  currentCtrl[0].className = currentCtrl[0].className.replace(' active', '');
+  control.addClass(' active');
+}
 // Handle click events
 exports.postAceInit = function (hook, context) {
+  const padOuter = $('iframe[name="ace_outer"]').contents().find('body');
+  $('#inline_image_toolbar').detach().appendTo(padOuter[0]);
+
   context.ace.callWithAce((ace) => {
     const doc = ace.ace_getDocument();
     const $inner = $(doc).find('#innerdocbody');
+    var currentImage;
 
-    $inner.on('mouseup', '#left', function (e) {
-      const imageLine = $(this).parents('div');
+    padOuter.on('mouseup', '#left', function (e) {
+      const imageLine = currentImage.parents('div');
       const lineNumber = imageLine.prevAll().length;
+      // Activate this element when clicked
+      activate(padOuter, $(this));
+      // Send align command to the server
       context.ace.callWithAce((ace) => {
         ace.ace_setImageAlign(e.currentTarget.id, lineNumber);
       }, 'img', true);
     });
 
-    $inner.on('mouseup', '#right', function (e) {
-      const imageLine = $(this).parents('div');
+    padOuter.on('mouseup', '#right', function (e) {
+      const imageLine = currentImage.parents('div');
       const lineNumber = imageLine.prevAll().length;
+      // Activate this element when clicked
+      activate(padOuter, $(this));
+      // Send align command to the server
       context.ace.callWithAce((ace) => {
         ace.ace_setImageAlign(e.currentTarget.id, lineNumber);
       }, 'img', true);
     });
 
-    $inner.on('mouseup', '#center', function (e) {
-      const imageLine = $(this).parents('div');
+    padOuter.on('mouseup', '#center', function (e) {
+      const imageLine = currentImage.parents('div');
       const lineNumber = imageLine.prevAll().length;
+      // Activate this element when clicked
+      activate(padOuter, $(this));
+      // Send align command to the server
       context.ace.callWithAce((ace) => {
         ace.ace_setImageAlign("none", lineNumber);
       }, 'img', true);
     });
 
-    $inner.on('mouseup change', '#_width', function (e) {
-      const imageLine = $(this).parents('div');
+    padOuter.on('mouseup', function (e) {
+      iiT.hide();
+    });
+
+    // Display and handle control box when righ-click on an image
+    $inner.on('contextmenu', '.image', function (e) {
+      // Disable the browser default context menu
+      e.preventDefault();
+
+      const toolbar = padOuter.find('#inline_image_toolbar');
+      // Get the current image
+      currentImage = $(this).find('img');
+
+      const imageWrapper = currentImage.parent('span');
+      const imgWidthText = imageWrapper.width() / imageWrapper.parent().width() * 100;
+      const widthValueText = padOuter.find('#widthValue');
+      const widthValueInput = padOuter.find('#_width');
+
+      // Set width text display in percent into the control box
+      widthValueText.text(imgWidthText.toFixed() + ' %');
+      // Set the default value of the range input to the actual size of the image
+      widthValueInput.val(imgWidthText.toFixed());
+
+      // Mark which alignement control is active for the selected image
+      switch (imageWrapper.css('float')) {
+        case 'left':
+          activate(padOuter, padOuter.find('#left'));
+          break;
+        
+        case 'right':
+          activate(padOuter, padOuter.find('#right'));
+          break;
+
+        case 'none':
+          activate(padOuter, padOuter.find('#center'));
+          break;
+      
+        default:
+          break;
+      }
+      
+      // Show the control box at the position of right-click event
+      iiT.show();
+      toolbar.css({
+        position: 'absolute',
+        left: e.pageX + padOuter.find('iframe').offset().left,
+        top: e.pageY
+      });
+    });
+
+    // Resize the selected image to the size from input range
+    padOuter.on('mouseup change', 'input[type="range"]', function (e) {
+      const imageLine = currentImage.parents('div');
       const lineNumber = imageLine.prevAll().length;
+      const w = e.currentTarget.value;
+      const width_value = padOuter.find('#widthValue');
+      width_value.text(w + ' %');
+
       context.ace.callWithAce((ace) => {
-        ace.ace_setImageSize($(this).val(), lineNumber);
+        ace.ace_setImageSize(w, lineNumber);
       }, 'img', true);
     });
   }, 'image', true);
@@ -132,15 +219,7 @@ exports.aceEditorCSS = () => [
   '/ep_image_insert/static/css/ep_image_insert.css',
 ];
 
-exports.aceInitialized = (hook, context) => {
-  const editorInfo = context.editorInfo;
-  editorInfo.ace_addImage = image.addImage.bind(context);
-  editorInfo.ace_setImageSize = image.setImageSize.bind(context);
-  editorInfo.ace_setImageAlign = image.setImageAlign.bind(context);
-  editorInfo.ace_removeImage = image.removeImage.bind(context);
-};
-
-exports.aceRegisterBlockElements = () => ['img'];
+exports.aceRegisterBlockElements = () => ['img', 'imgWidth'];
 
 exports.aceCreateDomLine = (name, args) => {
 };
