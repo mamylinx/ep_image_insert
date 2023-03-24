@@ -1,10 +1,29 @@
 'use strict';
-
 const _handleNewLines = (ace) => {
   const rep = ace.ace_getRep();
   const lineNumber = rep.selStart[0];
   const curLine = rep.lines.atIndex(lineNumber);
   if (curLine.text) {
+    // Handle image insertion in a table
+    // let nPL = [];
+    // let i = 0;
+    // var tblJSONObj = JSON.parse(curLine.text);
+    // let PL = tblJSONObj.payload[0];
+    // while (i < PL.length) {
+    //   nPL[i] = PL[i].trim().length + 4;
+    //   i++;
+    // }
+    // i = 0;
+    // let _rep_pos = 15;
+
+    // while (_rep_pos < rep.selStart[1]) {
+    //   _rep_pos = _rep_pos + nPL[i];
+    //   i++;
+    // }
+    // tblJSONObj.payload[0][i] = `Image`
+    // rep.lines.atIndex(lineNumber).text = JSON.stringify(tblJSONObj);
+    // End of insertion image in table
+
     ace.ace_doReturnKey();
     return lineNumber + 1;
   }
@@ -30,7 +49,7 @@ const _isValid = (file) => {
     }
     if (validMime === false) {
       const errorMessage = html10n.get('ep_image_insert.error.fileType');
-      $.gritter.add({title: errorTitle, text: errorMessage, sticky: true, class_name: 'error'});
+      $.gritter.add({ title: errorTitle, text: errorMessage, sticky: true, class_name: 'error' });
 
       return false;
     }
@@ -38,8 +57,8 @@ const _isValid = (file) => {
 
   if (clientVars.ep_image_insert && file.size > clientVars.ep_image_insert.maxFileSize) {
     const allowedSize = (clientVars.ep_image_insert.maxFileSize / 1000000);
-    const errorText = html10n.get('ep_image_insert.error.fileSize', {maxallowed: allowedSize});
-    $.gritter.add({title: errorTitle, text: errorText, sticky: true, class_name: 'error'});
+    const errorText = html10n.get('ep_image_insert.error.fileSize', { maxallowed: allowedSize });
+    $.gritter.add({ title: errorTitle, text: errorText, sticky: true, class_name: 'error' });
 
     return false;
   }
@@ -109,12 +128,12 @@ exports.postToolbarInit = (hook, context) => {
                 errorResponse.message = `ep_image_insert.error.${errorResponse.type}`;
               }
             } catch (err) {
-              errorResponse = {message: error.responseText};
+              errorResponse = { message: error.responseText };
             }
             const errorTitle = html10n.get('ep_image_insert.error.title');
             const errorText = html10n.get(errorResponse.message);
 
-            $.gritter.add({title: errorTitle, text: errorText, sticky: true, class_name: 'error'});
+            $.gritter.add({ title: errorTitle, text: errorText, sticky: true, class_name: 'error' });
           },
           async: true,
           data: formData,

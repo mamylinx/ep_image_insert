@@ -117,8 +117,7 @@ exports.postAceInit = function (hook, context) {
     var currentImage;
 
     padOuter.on('mouseup', '#left', function (e) {
-      const imageLine = currentImage.parents('div');
-      const lineNumber = imageLine.prevAll().length;
+      const lineNumber = getAllPrevious(currentImage.parentNode).length;
       // Activate this element when clicked
       activate(padOuter, $(this));
       // Send align command to the server
@@ -128,8 +127,7 @@ exports.postAceInit = function (hook, context) {
     });
 
     padOuter.on('mouseup', '#right', function (e) {
-      const imageLine = currentImage.parents('div');
-      const lineNumber = imageLine.prevAll().length;
+      const lineNumber = getAllPrevious(currentImage.parentNode).length;
       // Activate this element when clicked
       activate(padOuter, $(this));
       // Send align command to the server
@@ -139,8 +137,7 @@ exports.postAceInit = function (hook, context) {
     });
 
     padOuter.on('mouseup', '#center', function (e) {
-      const imageLine = currentImage.parents('div');
-      const lineNumber = imageLine.prevAll().length;
+      const lineNumber = getAllPrevious(currentImage.parentNode).length;
       // Activate this element when clicked
       activate(padOuter, $(this));
       // Send align command to the server
@@ -160,10 +157,9 @@ exports.postAceInit = function (hook, context) {
 
       const toolbar = padOuter.find('#inline_image_toolbar');
       // Get the current image
-      currentImage = $(this).find('img');
+      currentImage = e.currentTarget
 
-      const imageWrapper = currentImage.parent('span');
-      const imgWidthText = imageWrapper.width() / imageWrapper.parent().width() * 100;
+      const imgWidthText = currentImage.offsetWidth / currentImage.parentNode.offsetWidth * 100;
       const widthValueText = padOuter.find('#widthValue');
       const widthValueInput = padOuter.find('#_width');
 
@@ -173,7 +169,7 @@ exports.postAceInit = function (hook, context) {
       widthValueInput.val(imgWidthText.toFixed());
 
       // Mark which alignement control is active for the selected image
-      switch (imageWrapper.css('float')) {
+      switch (currentImage.style.float) {
         case 'left':
           activate(padOuter, padOuter.find('#left'));
           break;
@@ -201,8 +197,7 @@ exports.postAceInit = function (hook, context) {
 
     // Resize the selected image to the size from input range
     padOuter.on('mouseup change', 'input[type="range"]', function (e) {
-      const imageLine = currentImage.parents('div');
-      const lineNumber = imageLine.prevAll().length;
+      const lineNumber = getAllPrevious(currentImage.parentNode).length;
       const w = e.currentTarget.value;
       const width_value = padOuter.find('#widthValue');
       width_value.text(w + ' %');
@@ -213,6 +208,13 @@ exports.postAceInit = function (hook, context) {
     });
   }, 'image', true);
 };
+
+function getAllPrevious(element) {
+  var res = [];
+  while (element = element.previousElementSibling) 
+    res.push(element);
+  return res
+}
 
 exports.aceEditorCSS = () => [
   '/ep_image_insert/static/css/ace.css',
