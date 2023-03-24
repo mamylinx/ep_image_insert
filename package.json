@@ -1,7 +1,7 @@
 {
   "name": "ep_image_insert",
   "description": "Insert and resize images on etherpad",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "author": {
     "name": "Mamy Linx",
     "email": "mamy.else@gmail.com",
